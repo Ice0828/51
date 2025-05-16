@@ -1,0 +1,27 @@
+[
+    {
+        "word": "白石",
+        "phoneme": "bai 2",
+        "score": 30.0
+    },
+    {
+        "word": "白石",
+        "phoneme": "shi 2",
+        "score": 16.0
+    },
+    {
+        "word": "来",
+        "phoneme": "lai 2",
+        "score": 31.0
+    },
+    {
+        "word": "石",
+        "phoneme": "shi 2",
+        "score": 12.0
+    },
+    {
+        "word": "搭",
+        "phoneme": "da 1",
+        "score": 16.0
+    }
+]

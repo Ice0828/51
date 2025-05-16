@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}用户中心 - 发音学习平台{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>用户中心</h2>
+    <div class="user-info">
+        <h3>欢迎回来，{{ user.username }}</h3>
+        <p>在这里管理您的个人资料和语音工具</p>
+    </div>
+    
+    <div class="profile-section">
+        <h3>个人资料</h3>
+        <form action="{{ url_for('update_profile') }}" method="post" id="profile-form">
+            <div class="form-group">
+                <label for="email">电子邮件</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">电话号码</label>
+                <input type="tel" id="phone" name="phone" value="{{ user.phone }}">
+            </div>
+            <div class="form-group">
+                <label for="address">地址</label>
+                <textarea id="address" name="address" rows="3">{{ user.address }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="nationality">国籍</label>
+                <select id="nationality" name="nationality">
+                    <option value="">-- 请选择 --</option>
+                    <option value="中国" {% if user.nationality == '中国' %}selected{% endif %}>中国</option>
+                    <option value="美国" {% if user.nationality == '美国' %}selected{% endif %}>美国</option>
+                    <option value="英国" {% if user.nationality == '英国' %}selected{% endif %}>英国</option>
+                    <option value="加拿大" {% if user.nationality == '加拿大' %}selected{% endif %}>加拿大</option>
+                    <option value="澳大利亚" {% if user.nationality == '澳大利亚' %}selected{% endif %}>澳大利亚</option>
+                    <option value="日本" {% if user.nationality == '日本' %}selected{% endif %}>日本</option>
+                    <option value="韩国" {% if user.nationality == '韩国' %}selected{% endif %}>韩国</option>
+                    <option value="法国" {% if user.nationality == '法国' %}selected{% endif %}>法国</option>
+                    <option value="德国" {% if user.nationality == '德国' %}selected{% endif %}>德国</option>
+                    <option value="意大利" {% if user.nationality == '意大利' %}selected{% endif %}>意大利</option>
+                    <option value="西班牙" {% if user.nationality == '西班牙' %}selected{% endif %}>西班牙</option>
+                    <option value="俄罗斯" {% if user.nationality == '俄罗斯' %}selected{% endif %}>俄罗斯</option>
+                    <option value="其他" {% if user.nationality == '其他' %}selected{% endif %}>其他</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="native_language">母语</label>
+                <select id="native_language" name="native_language">
+                    <option value="">-- 请选择 --</option>
+                    <option value="汉语" {% if user.native_language == '汉语' %}selected{% endif %}>汉语</option>
+                    <option value="英语" {% if user.native_language == '英语' %}selected{% endif %}>英语</option>
+                    <option value="西班牙语" {% if user.native_language == '西班牙语' %}selected{% endif %}>西班牙语</option>
+                    <option value="法语" {% if user.native_language == '法语' %}selected{% endif %}>法语</option>
+                    <option value="德语" {% if user.native_language == '德语' %}selected{% endif %}>德语</option>
+                    <option value="日语" {% if user.native_language == '日语' %}selected{% endif %}>日语</option>
+                    <option value="韩语" {% if user.native_language == '韩语' %}selected{% endif %}>韩语</option>
+                    <option value="俄语" {% if user.native_language == '俄语' %}selected{% endif %}>俄语</option>
+                    <option value="阿拉伯语" {% if user.native_language == '阿拉伯语' %}selected{% endif %}>阿拉伯语</option>
+                    <option value="葡萄牙语" {% if user.native_language == '葡萄牙语' %}selected{% endif %}>葡萄牙语</option>
+                    <option value="意大利语" {% if user.native_language == '意大利语' %}selected{% endif %}>意大利语</option>
+                    <option value="其他" {% if user.native_language == '其他' %}selected{% endif %}>其他</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">更新资料</button>
+        </form>
+    </div>
+    
+    <div class="voice-tools-section">
+        <h3>语音工具</h3>
+        <div class="tool-cards">
+            <div class="tool-card">
+                <h4>语音合成</h4>
+                <p>使用AI将文本转换为语音，帮助您学习标准发音</p>
+                <a href="/tts" class="btn btn-primary">前往语音合成</a>
+            </div>
+            <div class="tool-card">
+                <h4>音色克隆</h4>
+                <p>上传您的声音样本，创建个性化语音模型</p>
+                <a href="/tts_clone" class="btn btn-primary">前往音色克隆</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="voice-section">
+        <h3>我的语音模型</h3>
+        <p>管理您的语音模型，帮助改进发音练习</p>
+        <a href="{{ url_for('voices') }}" class="btn btn-primary">进入语音模型库</a>
+    </div>
+    
+    <div class="account-section">
+        <h3>账户操作</h3>
+        <div class="account-buttons">
+            <a href="{{ url_for('logout') }}" class="btn btn-warning">退出登录</a>
+            <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post" id="delete-form" onsubmit="return confirm('您确定要删除您的账户吗？此操作不可逆。');" style="display: inline-block; margin-left: 10px;">
+                <button type="submit" class="btn btn-danger">删除账户</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 表单验证
+        const profileForm = document.getElementById('profile-form');
+        profileForm.addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value.trim();
+            
+            if (!email) {
+                e.preventDefault();
+                alert('电子邮件为必填项');
+                return;
+            }
+            
+            // 简单的电子邮件格式验证
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('请输入有效的电子邮件地址');
+                return;
+            }
+            
+            // 电话号码验证（可选）
+            const phone = document.getElementById('phone').value.trim();
+            if (phone) {
+                const phoneRegex = /^1[3-9]\d{9}$/;
+                if (!phoneRegex.test(phone)) {
+                    e.preventDefault();
+                    alert('请输入有效的手机号码');
+                    return;
+                }
+            }
+        });
+    });
+</script>
+{% endblock %} 

@@ -1,0 +1,614 @@
+{
+    "RecognitionStatus": "Success",
+    "Offset": 18300000,
+    "Duration": 22300000,
+    "DisplayText": "石搭滑石，白石又来石搭。",
+    "SNR": 26.661762,
+    "NBest": [
+        {
+            "Confidence": 0.4190211,
+            "Lexical": "石 搭 滑 石 白石 又 来 石 搭",
+            "ITN": "石 搭 滑 石 白石 又 来 石 搭",
+            "MaskedITN": "石搭滑石白石又来石搭",
+            "Display": "石搭滑石，白石又来石搭。",
+            "AccuracyScore": 7.0,
+            "FluencyScore": 6.0,
+            "ProsodyScore": 52.3,
+            "CompletenessScore": 5.0,
+            "PronScore": 15.1,
+            "Words": [
+                {
+                    "Word": "石",
+                    "Offset": 18300000,
+                    "Duration": 1700000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 68.0,
+                    "ErrorType": "Insertion",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 18300000,
+                            "Duration": 1700000,
+                            "AccuracyScore": 68.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 2",
+                            "Offset": 18300000,
+                            "Duration": 1700000,
+                            "AccuracyScore": 68.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "搭",
+                    "Offset": 20100000,
+                    "Duration": 4000000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 21.0,
+                    "ErrorType": "Insertion",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 20100000,
+                            "Duration": 4000000,
+                            "AccuracyScore": 21.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "da 1",
+                            "Offset": 20100000,
+                            "Duration": 4000000,
+                            "AccuracyScore": 21.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.5248616e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "滑",
+                    "Offset": 24500000,
+                    "Duration": 1900000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 60.0,
+                    "ErrorType": "Insertion",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 24500000,
+                            "Duration": 1900000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "hua 2",
+                            "Offset": 24500000,
+                            "Duration": 1900000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 0.16574591
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 0.917127
+                                },
+                                "BreakLength": 300000
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "石",
+                    "Offset": 26500000,
+                    "Duration": 1000000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 12.0,
+                    "ErrorType": "Insertion",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 26500000,
+                            "Duration": 1000000,
+                            "AccuracyScore": 12.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 2",
+                            "Offset": 26500000,
+                            "Duration": 1000000,
+                            "AccuracyScore": 12.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.5248616e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "白石",
+                    "Offset": 30000000,
+                    "Duration": 2700000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 24.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 30000000,
+                            "Duration": 1400000,
+                            "AccuracyScore": 30.0
+                        },
+                        {
+                            "Syllable": "",
+                            "Offset": 31500000,
+                            "Duration": 1200000,
+                            "AccuracyScore": 16.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "bai 2",
+                            "Offset": 30000000,
+                            "Duration": 1400000,
+                            "AccuracyScore": 30.0
+                        },
+                        {
+                            "Phoneme": "shi 2",
+                            "Offset": 31500000,
+                            "Duration": 1200000,
+                            "AccuracyScore": 16.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 1.325967
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 0.0
+                                },
+                                "BreakLength": 2400000
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "白",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "又",
+                    "Offset": 32800000,
+                    "Duration": 1200000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 64.0,
+                    "ErrorType": "None",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 32800000,
+                            "Duration": 1200000,
+                            "AccuracyScore": 64.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "you 4",
+                            "Offset": 32800000,
+                            "Duration": 1200000,
+                            "AccuracyScore": 64.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.5248616e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "滑",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "搬",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "来",
+                    "Offset": 34100000,
+                    "Duration": 1300000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 31.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 34100000,
+                            "Duration": 1300000,
+                            "AccuracyScore": 31.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "lai 2",
+                            "Offset": 34100000,
+                            "Duration": 1300000,
+                            "AccuracyScore": 31.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.5248616e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "白石",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "搭白塔",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "白石",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "塔",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "白石",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "塔",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "白",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "石",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "搭",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "石塔",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "白塔",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "白",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "石",
+                    "Offset": 37100000,
+                    "Duration": 2000000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 12.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 37100000,
+                            "Duration": 2000000,
+                            "AccuracyScore": 12.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 2",
+                            "Offset": 37100000,
+                            "Duration": 2000000,
+                            "AccuracyScore": 12.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 0.883978
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 0.0
+                                },
+                                "BreakLength": 1600000
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "搭",
+                    "Offset": 39200000,
+                    "Duration": 1400000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 16.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 39200000,
+                            "Duration": 1400000,
+                            "AccuracyScore": 16.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "da 1",
+                            "Offset": 39200000,
+                            "Duration": 1400000,
+                            "AccuracyScore": 16.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.5248616e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [
+                                    "Monotone"
+                                ],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.7576079
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

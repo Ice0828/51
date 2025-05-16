@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}语音合成 - 发音学习平台{% endblock %}
+
+{% block content %}
+<div class="tts-container">
+    <h1>文本转语音</h1>
+    
+    <div class="nav-links tts-nav">
+        <a href="/" class="nav-item">主页</a>
+        <a href="/tts_clone" class="nav-item">克隆音色</a>
+    </div>
+    
+    <div class="main-content">
+        <div class="input-group">
+            <label for="text-input">输入要转换的文本：</label>
+            <textarea id="text-input" rows="5" placeholder="请输入要转换为语音的文本..."></textarea>
+        </div>
+        
+        <div class="control-group">
+            <div class="select-wrapper">
+                <select id="voice-select">
+                    {% for voice in voices %}
+                    <option value="{{ voice.voice_uri }}">{{ voice.voice_name }}</option>
+                    {% endfor %}
+                </select>
+                <button id="synthesize-btn">生成语音</button>
+            </div>
+        </div>
+        
+        <div id="result-container" class="hidden">
+            <h3>生成的语音：</h3>
+            <div class="audio-player">
+                <audio id="audio-player" controls></audio>
+            </div>
+            <div class="status-message" id="status-message"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tts.css') }}">
+<script src="{{ url_for('static', filename='js/tts.js') }}"></script>
+{% endblock %} 

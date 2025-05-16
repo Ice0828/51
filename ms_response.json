@@ -1,0 +1,401 @@
+{
+    "RecognitionStatus": "Success",
+    "Offset": 9300000,
+    "Duration": 8400000,
+    "DisplayText": "四是四十是。",
+    "SNR": 29.786007,
+    "NBest": [
+        {
+            "Confidence": 0.77655846,
+            "Lexical": "四 是 四 十 是",
+            "ITN": "四 是 四十 是",
+            "MaskedITN": "四是四十是",
+            "Display": "四是四十是。",
+            "AccuracyScore": 13.0,
+            "FluencyScore": 89.0,
+            "ProsodyScore": 73.1,
+            "CompletenessScore": 14.0,
+            "PronScore": 40.4,
+            "Words": [
+                {
+                    "Word": "四",
+                    "Offset": 9300000,
+                    "Duration": 2200000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 44.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 9300000,
+                            "Duration": 2200000,
+                            "AccuracyScore": 44.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "si 4",
+                            "Offset": 9300000,
+                            "Duration": 2200000,
+                            "AccuracyScore": 44.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.8210485
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "是",
+                    "Offset": 11600000,
+                    "Duration": 1500000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 60.0,
+                    "ErrorType": "None",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 11600000,
+                            "Duration": 1500000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 4",
+                            "Offset": 11600000,
+                            "Duration": 1500000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.882353e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.8210485
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "四",
+                    "Offset": 13200000,
+                    "Duration": 1900000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 60.0,
+                    "ErrorType": "None",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 13200000,
+                            "Duration": 1900000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "si 4",
+                            "Offset": 13200000,
+                            "Duration": 1900000,
+                            "AccuracyScore": 60.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.882353e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.8210485
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "十",
+                    "Offset": 15200000,
+                    "Duration": 1600000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 88.0,
+                    "ErrorType": "None",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 15200000,
+                            "Duration": 1600000,
+                            "AccuracyScore": 88.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 2",
+                            "Offset": 15200000,
+                            "Duration": 1600000,
+                            "AccuracyScore": 88.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.882353e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.8210485
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "是",
+                    "Offset": 16900000,
+                    "Duration": 800000,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 31.0,
+                    "ErrorType": "Mispronunciation",
+                    "Syllables": [
+                        {
+                            "Syllable": "",
+                            "Offset": 16900000,
+                            "Duration": 800000,
+                            "AccuracyScore": 31.0
+                        }
+                    ],
+                    "Phonemes": [
+                        {
+                            "Phoneme": "shi 4",
+                            "Offset": 16900000,
+                            "Duration": 800000,
+                            "AccuracyScore": 31.0
+                        }
+                    ],
+                    "Feedback": {
+                        "Prosody": {
+                            "Break": {
+                                "ErrorTypes": [
+                                    "None"
+                                ],
+                                "UnexpectedBreak": {
+                                    "Confidence": 5.882353e-08
+                                },
+                                "MissingBreak": {
+                                    "Confidence": 1.0
+                                },
+                                "BreakLength": 0
+                            },
+                            "Intonation": {
+                                "ErrorTypes": [],
+                                "Monotone": {
+                                    "Confidence": 0.0,
+                                    "WordPitchSlopeConfidence": 0.0,
+                                    "SyllablePitchDeltaConfidence": 0.8210485
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "Word": "十",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "十四",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "是",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "十四",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "四十",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "是",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "四十",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "说",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "好",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "四和",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "十",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "得",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "靠",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "舌头",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "和",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                },
+                {
+                    "Word": "牙齿",
+                    "Offset": 0,
+                    "Duration": 0,
+                    "Confidence": 0.0,
+                    "AccuracyScore": 0.0,
+                    "ErrorType": "Omission",
+                    "Phonemes": []
+                }
+            ]
+        }
+    ]
+}

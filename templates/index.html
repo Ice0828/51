@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}发音学习平台{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <!-- 左侧主要内容区 -->
+    <div class="main-content">
+        <div class="demo-container">
+            <div id="ttscont">
+                <div class="button-container">
+                    <button id="buttonhear" class="h-button">
+                        <svg class="icon"><use xlink:href="#icon-headphones"></use></svg> 学习发音
+                    </button>
+                </div> 
+
+                <div id="ttsList"></div>
+                <div id="ttsloader">
+                    <div id="loader"></div>
+                </div> 
+            </div>
+
+            <div id="formcontainer">
+                <form id="reftextform">
+                    <textarea id="reftext" rows="3" maxlength="160" autofocus placeholder="请输入要练习的文本..."></textarea>
+                </form>
+                <div class="voice-selector">
+                    <label for="voice-select">选择音色：</label>
+                    <select id="voice-select">
+                        {% for voice in voices %}
+                        <option value="{{ voice.voice_uri }}">{{ voice.voice_name }}</option>
+                        {% endfor %}
+                        <option value="clone_voice" class="clone-option">+++ 克隆新音色 +++</option>
+                    </select>
+                </div>
+                <div class="voice-links">
+                    <a href="{{ url_for('voices') }}" class="voice-link">
+                        <svg class="icon"><use xlink:href="#icon-list"></use></svg> 我的音色列表
+                    </a>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="randomtt" class="blue-button">
+                    <svg class="icon"><use xlink:href="#icon-random"></use></svg> 获取绕口令
+                </button>
+                <button id="buttonmic" class="green-button">
+                    <svg class="icon"><use xlink:href="#icon-mic"></use></svg> 录音
+                </button>
+            </div>
+
+            <div id="recordcont">
+                <div id="recordingsList"></div>
+
+                <div id="recordloader">
+                    <div id="loader"></div>
+                </div>
+                
+                <div id="metrics" class="animate-bottom">
+                    <div id="summarytable">
+                        <table>
+                            <tr>
+                                <th>准确性得分</th>
+                                <th>流利度得分</th>
+                                <th>完整度得分</th>
+                                <th>韵律得分</th>
+                                <th>发音总分</th>
+                                <th id="woh">遗漏单词</th>
+                                <th id="wih">额外单词</th>
+                            </tr>
+                            <tr>
+                                <td id="accuracyscore"></td>
+                                <td id="fluencyscore"></td>
+                                <td id="completenessscore"></td>
+                                <td id="prosodyscore"></td>
+                                <td id="pronscore"></td>
+                                <td id="wordsomitted"></td>
+                                <td id="wordsinserted"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div id="detailedtable">
+                        <table>
+                            <tr id="wordrow"></tr>
+                            <tr id="phonemerow"></tr>
+                            <tr id="scorerow"></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 音素教学示范区域 -->
+                <div id="phoneme-demo-container" style="display: none;">
+                    <h3>发音问题音素</h3>
+                    <div id="problem-phonemes-container">
+                        <div class="phoneme-tabs">
+                            <div class="tab active" data-tab="consonants">声母</div>
+                            <div class="tab" data-tab="vowels">韵母</div>
+                            <div class="tab" data-tab="tones">声调</div>
+                        </div>
+                        <div class="phoneme-content">
+                            <div id="consonants-list" class="phoneme-list active"></div>
+                            <div id="vowels-list" class="phoneme-list"></div>
+                            <div id="tones-list" class="phoneme-list"></div>
+                        </div>
+                    </div>
+                    <div id="video-player-container">
+                        <h4>教学示范</h4>
+                        <div id="video-player">
+                            <p class="instruction">点击上方的音素查看发音示范</p>
+                            <video id="phoneme-video" controls style="display: none;"></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footeralert">请允许使用您的麦克风进行发音练习。</div>
+        </div>
+    </div>
+
+    <!-- 右侧发音指导区 -->
+    <div class="feedback-sidebar">
+        <div id="llm-feedback-container" style="display: none;">
+            <h3>发音指导</h3>
+            <div id="llm-loading" class="loading-container" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">正在向语音教师请教，请稍等...</p>
+            </div>
+            <div id="llm-feedback" class="loading-text markdown-body"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- 引入专用样式和脚本文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index_style.css') }}">
+<!-- 引入Markdown解析库 -->
+<script src="{{ url_for('static', filename='js/lib/marked.min.js') }}"></script>
+<!-- 引入GitHub风格的Markdown样式 -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lib/github-markdown.min.css') }}">
+<script src="{{ url_for('static', filename='js/recorder.js') }}"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+<script>
+// 调试代码
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("页面完全加载完成");
+    
+    // 检查SVG图标是否正确加载
+    var icons = document.querySelectorAll('.icon');
+    console.log("找到SVG图标数量:", icons.length);
+    
+    // 检查关键元素
+    console.log("检查关键元素:");
+    console.log("reftext:", document.getElementById('reftext'));
+    console.log("ttbutton:", document.getElementById('randomtt'));
+    console.log("hbutton:", document.getElementById('buttonhear'));
+    
+    // 手动为绕口令按钮添加事件监听
+    var ttbutton = document.getElementById('randomtt');
+    if (ttbutton) {
+        console.log("为绕口令按钮添加点击事件");
+        ttbutton.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认行为
+            console.log("绕口令按钮被点击");
+            var request = new XMLHttpRequest();
+            request.open('POST', '/gettonguetwister', true);
+            
+            request.onload = function() {
+                console.log("绕口令请求响应:", this.responseText);
+                try {
+                    const data = JSON.parse(this.responseText);
+                    console.log("解析的绕口令数据:", data);
+                    var reftext = document.getElementById('reftext');
+                    reftext.value = data.tt;
+                } catch (e) {
+                    console.error("解析绕口令响应时出错:", e);
+                }
+            };
+            
+            request.onerror = function() {
+                console.error("绕口令请求失败");
+            };
+            
+            console.log("发送绕口令请求");
+            request.send();
+        });
+    }
+});
+</script>
+{% endblock %} 

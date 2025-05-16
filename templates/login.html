@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}登录 - 发音学习平台{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>学习者登录</h2>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="form-group">
+            <label for="email">电子邮件</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+    <div class="form-footer">
+        <p>还没有账号？<a href="{{ url_for('register') }}">立即注册</a>，开始您的发音学习之旅</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 简单的表单验证
+        const loginForm = document.querySelector('form');
+        loginForm.addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            if (!email || !password) {
+                e.preventDefault();
+                alert('请填写所有必填字段');
+            }
+            
+            // 简单的电子邮件格式验证
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('请输入有效的电子邮件地址');
+                return;
+            }
+        });
+    });
+</script>
+{% endblock %} 

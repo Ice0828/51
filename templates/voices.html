@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}语音模型库 - 发音学习平台{% endblock %}
+
+{% block content %}
+<div class="voices-container">
+    <h2>我的语音模型库</h2>
+    <p>管理您的语音模型，提升发音学习效果</p>
+    
+    
+    <div class="voices-list">
+        <h3>已保存的语音模型</h3>
+        
+        {% if voices %}
+        <div class="voice-cards">
+            {% for voice in voices %}
+            <div class="voice-card" data-id="{{ voice.id }}">
+                <div class="voice-info">
+                    <h4 class="voice-name">{{ voice.voice_name or '未命名模型' }}</h4>
+                    <div class="voice-description">{{ voice.voice_description or '无备注信息' }}</div>
+                    <div class="voice-date">创建时间: {{ voice.create_time }}</div>
+                </div>
+                <div class="voice-actions">
+                    <button class="btn rename-btn" data-id="{{ voice.id }}" data-name="{{ voice.voice_name or '' }}" data-description="{{ voice.voice_description or '' }}">编辑信息</button>
+                    <form action="{{ url_for('delete_voice', voice_id=voice.id) }}" method="post" class="delete-form">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('确定要删除这个语音模型吗？')">删除</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-voices">
+            <p>您还没有添加任何语音模型，添加模型可以帮助您更好地学习发音</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- 编辑音色信息模态框 -->
+<div id="rename-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>编辑语音模型信息</h3>
+        <form id="rename-form">
+            <input type="hidden" id="rename-voice-id">
+            <div class="form-group">
+                <label for="new-name">名称</label>
+                <input type="text" id="new-name" name="new-name" required>
+            </div>
+            <div class="form-group">
+                <label for="new-description">备注（可选）</label>
+                <textarea id="new-description" name="new-description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">保存</button>
+        </form>
+        <div id="rename-message" class="form-message"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("页面加载完成，开始初始化编辑功能");
+        
+        // 编辑音色信息功能
+        const modal = document.getElementById('rename-modal');
+        const renameForm = document.getElementById('rename-form');
+        const renameMessage = document.getElementById('rename-message');
+        const renameVoiceId = document.getElementById('rename-voice-id');
+        const newNameInput = document.getElementById('new-name');
+        const newDescriptionInput = document.getElementById('new-description');
+        const closeBtn = document.querySelector('.close');
+        
+        console.log("模态框元素:", modal ? "已找到" : "未找到");
+        console.log("表单元素:", renameForm ? "已找到" : "未找到");
+        
+        // 打开模态框
+        const renameBtns = document.querySelectorAll('.rename-btn');
+        console.log("找到编辑按钮数量:", renameBtns.length);
+        
+        renameBtns.forEach((btn, index) => {
+            console.log(`初始化第${index+1}个编辑按钮`);
+            btn.addEventListener('click', function(event) {
+                event.preventDefault(); // 阻止默认行为
+                console.log("编辑按钮被点击");
+                
+                const voiceId = this.getAttribute('data-id');
+                const currentName = this.getAttribute('data-name');
+                const currentDescription = this.getAttribute('data-description');
+                
+                console.log("编辑音色ID:", voiceId);
+                console.log("当前名称:", currentName);
+                
+                // 填充表单
+                renameVoiceId.value = voiceId;
+                newNameInput.value = currentName;
+                newDescriptionInput.value = currentDescription;
+                
+                // 重置消息区域
+                renameMessage.textContent = '';
+                renameMessage.className = 'form-message';
+                
+                // 显示模态框
+                modal.style.display = 'block';
+            });
+        });
+        
+        // 关闭模态框
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                console.log("关闭按钮被点击");
+                modal.style.display = 'none';
+            });
+        }
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                console.log("点击模态框外部，关闭模态框");
+                modal.style.display = 'none';
+            }
+        });
+        
+        // 提交编辑信息表单
+        if (renameForm) {
+            renameForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log("提交编辑表单");
+                
+                const voiceId = renameVoiceId.value;
+                const newName = newNameInput.value.trim();
+                const newDescription = newDescriptionInput.value.trim();
+                
+                console.log("提交数据 - ID:", voiceId, "名称:", newName);
+                
+                if (!newName) {
+                    renameMessage.textContent = '名称不能为空';
+                    renameMessage.className = 'form-message error-message';
+                    return;
+                }
+                
+                const formData = new FormData();
+                formData.append('voice_id', voiceId);
+                formData.append('name', newName);
+                formData.append('description', newDescription);
+                
+                renameMessage.textContent = '正在更新...';
+                renameMessage.className = 'form-message';
+                
+                fetch('{{ url_for("update_voice_name") }}', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("服务器响应:", data);
+                    if (data.success) {
+                        renameMessage.textContent = data.message;
+                        renameMessage.className = 'form-message success-message';
+                        
+                        // 关闭模态框并刷新页面
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            location.reload(); // 刷新页面以确保更新
+                        }, 1000);
+                    } else {
+                        renameMessage.textContent = data.message;
+                        renameMessage.className = 'form-message error-message';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    renameMessage.textContent = '更新失败，请稍后重试';
+                    renameMessage.className = 'form-message error-message';
+                });
+            });
+        }
+    });
+</script>
+{% endblock %} 

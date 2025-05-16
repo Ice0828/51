@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+
+{% block title %}注册 - 发音学习平台{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>学习者注册</h2>
+    <p>创建您的账号，开始提升发音能力</p>
+    
+    <form id="register-form" method="post" action="{{ url_for('register') }}">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" required>
+            <div class="form-note">请使用字母、数字和下划线，长度3-20个字符</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">电子邮件</label>
+            <input type="email" id="email" name="email" required>
+            <div class="form-note">我们会向此邮箱发送验证码</div>
+        </div>
+        
+        <div class="form-group verification-input-group">
+            <input type="text" id="verification_code" name="verification_code" placeholder="验证码" required>
+            <button type="button" id="send-code-btn" class="btn">获取验证码</button>
+        </div>
+        <div id="verification-message"></div>
+        
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required>
+            <div class="form-note">密码长度至少为6个字符</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="confirm_password">确认密码</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="nationality">国籍</label>
+            <select id="nationality" name="nationality">
+                <option value="">-- 请选择 --</option>
+                <option value="中国">中国</option>
+                <option value="美国">美国</option>
+                <option value="英国">英国</option>
+                <option value="加拿大">加拿大</option>
+                <option value="澳大利亚">澳大利亚</option>
+                <option value="日本">日本</option>
+                <option value="韩国">韩国</option>
+                <option value="法国">法国</option>
+                <option value="德国">德国</option>
+                <option value="意大利">意大利</option>
+                <option value="西班牙">西班牙</option>
+                <option value="俄罗斯">俄罗斯</option>
+                <option value="其他">其他</option>
+            </select>
+            <div class="form-note">选择您的国籍，帮助我们提供更适合您的发音练习</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="native_language">母语</label>
+            <select id="native_language" name="native_language">
+                <option value="">-- 请选择 --</option>
+                <option value="汉语">汉语</option>
+                <option value="英语">英语</option>
+                <option value="西班牙语">西班牙语</option>
+                <option value="法语">法语</option>
+                <option value="德语">德语</option>
+                <option value="日语">日语</option>
+                <option value="韩语">韩语</option>
+                <option value="俄语">俄语</option>
+                <option value="阿拉伯语">阿拉伯语</option>
+                <option value="葡萄牙语">葡萄牙语</option>
+                <option value="意大利语">意大利语</option>
+                <option value="其他">其他</option>
+            </select>
+            <div class="form-note">选择您的母语，我们会提供针对性的发音训练计划</div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">创建账号</button>
+    </form>
+    
+    <div class="form-footer">
+        <p>已有账号？<a href="{{ url_for('login') }}">立即登录</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const registerForm = document.getElementById('register-form');
+        const sendCodeBtn = document.getElementById('send-code-btn');
+        const verificationMessage = document.getElementById('verification-message');
+        let codeVerified = false;
+        let emailField = document.getElementById('email');
+        let verificationCodeField = document.getElementById('verification_code');
+        
+        // 验证表单
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const email = emailField.value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const verificationCode = verificationCodeField.value.trim();
+            
+            // 基本验证
+            if (!username || !email || !password || !confirmPassword || !verificationCode) {
+                alert('请填写所有必填字段');
+                return;
+            }
+            
+            // 用户名验证
+            if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+                alert('用户名只能包含字母、数字和下划线，长度3-20个字符');
+                return;
+            }
+            
+            // 邮箱验证
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('请输入有效的电子邮件地址');
+                return;
+            }
+            
+            // 密码验证
+            if (password.length < 6) {
+                alert('密码长度至少为6个字符');
+                return;
+            }
+            
+            // 密码确认
+            if (password !== confirmPassword) {
+                alert('两次输入的密码不一致');
+                return;
+            }
+            
+            // 验证码验证
+            if (!codeVerified) {
+                // 先验证验证码是否有效
+                verifyCode(function(valid) {
+                    if (valid) {
+                        submitForm();
+                    }
+                });
+            } else {
+                submitForm();
+            }
+            
+            function submitForm() {
+                // 使用AJAX提交表单
+                const formData = new FormData(registerForm);
+                
+                fetch('{{ url_for("register") }}', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        }
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('提交出错:', error);
+                    alert('提交失败，请稍后重试');
+                });
+            }
+        });
+        
+        // 发送验证码
+        sendCodeBtn.addEventListener('click', function() {
+            const email = emailField.value.trim();
+            
+            if (!email) {
+                alert('请先填写电子邮件地址');
+                return;
+            }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('请输入有效的电子邮件地址');
+                return;
+            }
+            
+            // 禁用按钮
+            sendCodeBtn.disabled = true;
+            sendCodeBtn.textContent = '发送中...';
+            
+            // 发送请求获取验证码
+            const formData = new FormData();
+            formData.append('email', email);
+            
+            fetch('{{ url_for("request_verification_code") }}', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    verificationMessage.textContent = data.message;
+                    verificationMessage.className = 'success-message';
+                    
+                    // 倒计时
+                    let countdown = 60;
+                    const timer = setInterval(function() {
+                        sendCodeBtn.textContent = `${countdown}秒后重新获取`;
+                        countdown--;
+                        
+                        if (countdown < 0) {
+                            clearInterval(timer);
+                            sendCodeBtn.disabled = false;
+                            sendCodeBtn.textContent = '获取验证码';
+                        }
+                    }, 1000);
+                } else {
+                    verificationMessage.textContent = data.message;
+                    verificationMessage.className = 'error-message';
+                    sendCodeBtn.disabled = false;
+                    sendCodeBtn.textContent = '获取验证码';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                verificationMessage.textContent = '发送失败，请稍后重试';
+                verificationMessage.className = 'error-message';
+                sendCodeBtn.disabled = false;
+                sendCodeBtn.textContent = '获取验证码';
+            });
+        });
+        
+        // 验证码失去焦点时验证
+        verificationCodeField.addEventListener('blur', function() {
+            const code = verificationCodeField.value.trim();
+            if (code.length === 6) {
+                verifyCode();
+            }
+        });
+        
+        // 验证验证码
+        function verifyCode(callback) {
+            const email = emailField.value.trim();
+            const code = verificationCodeField.value.trim();
+            
+            if (!email || !code) {
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('code', code);
+            
+            fetch('{{ url_for("verify_code_ajax") }}', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.valid) {
+                    verificationMessage.textContent = data.message;
+                    verificationMessage.className = 'success-message';
+                    codeVerified = true;
+                } else {
+                    verificationMessage.textContent = data.message;
+                    verificationMessage.className = 'error-message';
+                    codeVerified = false;
+                }
+                
+                if (callback && typeof callback === 'function') {
+                    callback(data.valid);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                verificationMessage.textContent = '验证失败，请稍后重试';
+                verificationMessage.className = 'error-message';
+                codeVerified = false;
+                
+                if (callback && typeof callback === 'function') {
+                    callback(false);
+                }
+            });
+        }
+    });
+</script>
+{% endblock %} 
